@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undian Doorprize</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #000;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      padding: 20px 24px 30px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-81 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #e50914;
+      line-height: 1;
+      font-style: italic;
+    }
+
+    .logo-text {
+      font-size: 8px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #000;
+      letter-spacing: 0.5px;
+    }
+
+    .info-icon {
+      width: 24px;
+      height: 24px;
+      background: #000;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 14px;
+      font-style: italic;
+      font-family: serif;
+      cursor: pointer;
+    }
+
+    /* Title */
+    .title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+
+    /* Digit Display */
+    .digits-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .digit-box {
+      width: 90px;
+      height: 110px;
+      background: linear-gradient(180deg, #333333 0%, #1a1a1a 100%);
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ff0000;
+      font-size: 72px;
+      font-weight: 800;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+      border: 1px solid #444;
+    }
+
+    /* Button ACAK */
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 25px;
+    }
+
+    .btn-acak {
+      width: 180px;
+      padding: 12px 0;
+      background-color: #52ce80;
+      color: #2563eb;
+      font-size: 22px;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 6px 0 #3b9e60, 0 8px 10px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: all 0.1s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-acak:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #3b9e60, 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-acak:disabled {
+      background-color: #a0aec0;
+      box-shadow: 0 6px 0 #718096;
+      color: #e2e8f0;
+      cursor: not-allowed;
+    }
+
+    /* History Box */
+    .history-section {
+      margin-bottom: 25px;
+    }
+
+    .history-title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .history-box {
+      width: 100%;
+      height: 100px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-content: flex-start;
+      background: #fff;
+    }
+
+    .history-item {
+      background: #e5e7eb;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* Input Settings */
+    .inputs-wrapper {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .input-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    /* Footer */
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: auto;
+    }
+
+    .watermark {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .flag-icon {
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div>
+      <!-- Header -->
+      <div class="header">
+        <div class="logo-container">
+          <div class="logo-81">81</div>
+          <div class="logo-text">
+            INDONESIA<br>
+            BERDAULAT<br>
+            ADIL DAN<br>
+            MAKMUR
+          </div>
+        </div>
+        <div class="info-icon">i</div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="title">DOORPRIZE</h1>
+
+      <!-- Digits -->
+      <div class="digits-wrapper">
+        <div class="digit-box" id="d1">0</div>
+        <div class="digit-box" id="d2">0</div>
+        <div class="digit-box" id="d3">0</div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="btn-container">
+        <button class="btn-acak" id="btnAcak">ACAK</button>
+      </div>
+
+      <!-- Result History -->
+      <div class="history-section">
+        <div class="history-title">Angka Sudah Keluar</div>
+        <div class="history-box" id="historyBox"></div>
+      </div>
+
+      <!-- Inputs -->
+      <div class="inputs-wrapper">
+        <div class="input-group">
+          <label>Jumlah Doorprize</label>
+          <input type="number" id="inputDoorprize" value="24" min="1">
+        </div>
+        <div class="input-group">
+          <label>Jumlah Hadirin</label>
+          <input type="number" id="inputHadirin" value="79" min="1">
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="watermark">unsorry@2026</div>
+      <div class="flag-icon">🇮🇩</div>
+    </div>
+  </div>
+
+  <script>
+    const d1 = document.getElementById('d1');
+    const d2 = document.getElementById('d2');
+    const d3 = document.getElementById('d3');
+    const btnAcak = document.getElementById('btnAcak');
+    const historyBox = document.getElementById('historyBox');
+    const inputDoorprize = document.getElementById('inputDoorprize');
+    const inputHadirin = document.getElementById('inputHadirin');
+
+    let drawnNumbers = [];
+    let isSpinning = false;
+
+    btnAcak.addEventListener('click', () => {
+      if (isSpinning) return;
+
+      const totalHadirin = parseInt(inputHadirin.value);
+      const totalDoorprize = parseInt(inputDoorprize.value);
+
+      if (isNaN(totalHadirin) || totalHadirin <= 0) {
+        alert('Jumlah hadirin harus lebih dari 0!');
+        return;
+      }
+
+      if (drawnNumbers.length >= totalDoorprize) {
+        alert('Jumlah doorprize sudah habis!');
+        return;
+      }
+
+      if (drawnNumbers.length >= totalHadirin) {
+        alert('Semua peserta sudah mendapatkan undian!');
+        return;
+      }
+
+      // Lock button during animation
+      isSpinning = true;
+      btnAcak.disabled = true;
+
+      // Spin animation logic
+      let counter = 0;
+      const spinInterval = setInterval(() => {
+        d1.textContent = Math.floor(Math.random() * 10);
+        d2.textContent = Math.floor(Math.random() * 10);
+        d3.textContent = Math.floor(Math.random() * 10);
+        counter++;
+
+        if (counter > 20) { // Duration of roll effect
+          clearInterval(spinInterval);
+          finalizeDraw(totalHadirin);
+        }
+      }, 50);
+    });
+
+    function finalizeDraw(maxHadirin) {
+      let winningNum;
+
+      // Pick a unique random number
+      do {
+        winningNum = Math.floor(Math.random() * maxHadirin) + 1;
+      } while (drawnNumbers.includes(winningNum));
+
+      drawnNumbers.push(winningNum);
+
+      // Pad number to 3 digits (e.g. 7 -> 007)
+      const formattedNum = String(winningNum).padStart(3, '0');
+
+      d1.textContent = formattedNum[0];
+      d2.textContent = formattedNum[1];
+      d3.textContent = formattedNum[2];
+
+      // Add to history UI
+      const historyItem = document.createElement('div');
+      historyItem.className = 'history-item';
+      historyItem.textContent = formattedNum;
+      historyBox.appendChild(historyItem);
+      historyBox.scrollTop = historyBox.scrollHeight;
+
+      // Unlock button
+      isSpinning = false;
+      btnAcak.disabled = false;
+    }
+  </script>
+</body>
+</html>
